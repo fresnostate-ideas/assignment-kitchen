@@ -99,55 +99,61 @@ a:focus-visible,
 
 #intro.active { display: flex; }
 
-/* Full-width photo at top */
-.intro-photo {
-  width: 100%;
-  height: 420px;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.intro-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-  filter: brightness(0.78) saturate(0.88);
-}
-
-/* Gradient fade bottom edge into the dark background below */
-.intro-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(28,23,16,0.15) 0%,
-    transparent 35%,
-    transparent 55%,
-    var(--ink) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Text content below the photo */
+/* Text content */
 .intro-inner {
   position: relative;
   z-index: 1;
   max-width: 780px;
   width: 100%;
   margin: 0 auto;
-  padding: 3rem 2.5rem 4rem;
+  padding: 4rem 2.5rem 4rem;
   display: flex;
   flex-direction: column;
 }
 
+/* Editorial photo block — sits between reframe text and phase grid */
+.intro-photo {
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 3px solid var(--flame);
+  padding-left: 1.5rem;
+}
+
+.intro-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  filter: brightness(0.88) saturate(0.92);
+}
+
+.intro-photo-caption {
+  padding: 0.9rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.intro-photo-caption-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--flame);
+  font-weight: 700;
+}
+
+.intro-photo-caption-text {
+  font-size: 0.88rem;
+  color: var(--parchment-mid);
+  line-height: 1.65;
+  font-style: italic;
+}
+
 @media (max-width: 640px) {
-  .intro-photo { height: 260px; }
-  .intro-inner { padding: 2rem 1.5rem 3rem; }
+  .intro-inner { padding: 2.5rem 1.5rem 3rem; }
+  .intro-photo { padding-left: 1rem; }
 }
 
 /* Eyebrow */
@@ -1154,15 +1160,7 @@ a:focus-visible,
      INTRO SCREEN
 ═══════════════════════════════════════════════════════════════════════ -->
 <div class="screen active" id="intro" role="main">
-
-  <div class="intro-photo" aria-hidden="true">
-    <img src="https://raw.githubusercontent.com/fresnostate-ideas/assignment-kitchen/main/assignmentkitchen.jpeg"
-         alt="">
-  </div>
-
   <div class="intro-inner">
-
-    <div class="intro-eyebrow">Module 1 &mdash; Phases of the Assignment Experience</div>
 
     <h1 class="intro-title">The Assignment<br><em>Kitchen</em></h1>
 
@@ -1174,6 +1172,14 @@ a:focus-visible,
       <p>We tend to think of assignments as <strong>products</strong> &mdash; a paper, a post, a presentation, a grade. But that view only captures the moment of delivery. It misses almost everything that shapes whether learning actually happens.</p>
       <p>Cooking offers a more useful lens. A finished dish only makes sense in the context of everything that came before it: the recipe chosen, the ingredients gathered, the technique practiced, the adjustments made along the way, and the reflection afterward on what worked and what you would do differently next time. <strong>The full process is important.</strong></p>
       <p>The same is true of assignments. The framework below asks you to look at an assignment the way a cook looks at a meal &mdash; not only at what gets served, but at the full experience that produces it.</p>
+    </div>
+
+    <div class="intro-photo">
+      <img src="https://raw.githubusercontent.com/fresnostate-ideas/assignment-kitchen/main/assignmentkitchen.jpeg"
+           alt="Four people in a cooking class, each peeling fruit with a different implement while an instructor guides them">
+      <div class="intro-photo-caption">
+               <div class="intro-photo-caption-text">Like cooking, teaching and learning is a process.</div>
+      </div>
     </div>
 
     <div class="intro-phases" role="list" aria-label="The three phases of the assignment experience">
