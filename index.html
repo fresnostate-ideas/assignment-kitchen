@@ -20,7 +20,7 @@
   --parchment-faint: #6a5f50;
 
   /* Phase palette — warm and distinct */
-  --mise:         #c9960a;   /* gold — mise en place */
+  --mise:         #7d5c06;   /* gold — mise en place, darkened for AA on light bg */
   --mise-dim:     rgba(201,150,10,0.12);
   --mise-border:  rgba(201,150,10,0.3);
 
@@ -38,7 +38,7 @@
   --pinch-border: rgba(192,84,42,0.25);
 
   /* Assumption — smoke */
-  --assumption:   #7a6e5e;
+  --assumption:   #736757;
   --assumption-dim: rgba(122,110,94,0.1);
 
   /* Accent — the lit flame */
@@ -223,7 +223,7 @@ a:focus-visible,
 .intro-subtitle {
   font-family: var(--font-display);
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--parchment-dim);
+  color: #b4afaa;
   font-style: italic;
   margin-bottom: 3rem;
   opacity: 0;
@@ -248,7 +248,7 @@ a:focus-visible,
 
 .intro-reframe p {
   font-size: 1rem;
-  color: var(--parchment-dim);
+  color: #b4afaa;
   line-height: 1.8;
   max-width: 640px;
 }
@@ -304,6 +304,9 @@ a:focus-visible,
   font-weight: 700;
   margin-bottom: 0.15rem;
 }
+
+.intro-phase-num.cook-color { color: #db6850; }
+.intro-phase-num.pass-color { color: #62946f; }
 
 .mise-color  { color: var(--mise); }
 .cook-color  { color: var(--cook); }
@@ -530,7 +533,7 @@ a:focus-visible,
   font-size: 0.67rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--flame);
+  color: #a05908;
   font-weight: 700;
   margin-bottom: 0.35rem;
 }
@@ -724,7 +727,7 @@ a:focus-visible,
   font-size: 0.67rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--flame);
+  color: #a05908;
   font-weight: 700;
   margin-bottom: 0.6rem;
 }
@@ -931,8 +934,8 @@ a:focus-visible,
 }
 
 .phase-tab-mise .phase-number { color: var(--mise); }
-.phase-tab-cook .phase-number { color: var(--cook); }
-.phase-tab-pass .phase-number { color: var(--pass); }
+.phase-tab-cook .phase-number { color: #db6850; }
+.phase-tab-pass .phase-number { color: #62946f; }
 
 .phase-name {
   font-family: var(--font-display);
@@ -1048,7 +1051,7 @@ a:focus-visible,
   gap: 0.4rem;
 }
 
-.pinch-block .detail-block-label   { color: var(--pinch); }
+.pinch-block .detail-block-label   { color: #b95128; }
 .assumption-block .detail-block-label { color: var(--assumption); }
 
 .label-icon { font-size: 0.8rem; line-height: 1; }
@@ -1142,7 +1145,164 @@ a:focus-visible,
   /* prompts rendered as list — class kept for backwards compat */
 }
 
-.reflection-list {
+/* ─── Surface reveal inline ─────────────────────────────────────────── */
+#surface-reveal {
+  animation: reveal-drop 0.35s ease;
+}
+
+@keyframes reveal-drop {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.surface-reveal-divider {
+  margin: 2rem 0 1.75rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--flame), transparent);
+}
+
+.surface-reveal-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ─── Closing screen ─────────────────────────────────────────────────── */
+.closing-panel {
+  background: var(--ink);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.closing-header {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--ink-border);
+  position: relative;
+}
+
+.closing-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 2rem;
+  width: 48px; height: 2px;
+  background: var(--flame);
+}
+
+.closing-eyebrow {
+  font-size: 0.67rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--flame);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.closing-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--parchment);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.closing-body {
+  padding: 1.75rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.closing-lead {
+  font-size: 0.95rem;
+  color: var(--parchment-mid);
+  line-height: 1.7;
+}
+
+.closing-reflection {
+  background: var(--flame-dim);
+  border: 1px solid rgba(232,130,10,0.25);
+  border-left: 3px solid var(--flame);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+}
+
+.closing-reflection-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--flame);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.closing-reflection-q {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--parchment);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.closing-reflection-q em {
+  color: var(--flame);
+}
+
+.closing-metaphor {
+  border-top: 1px solid var(--ink-border);
+  padding-top: 1.5rem;
+}
+
+.closing-metaphor p {
+  font-size: 0.92rem;
+  color: var(--parchment-mid);
+  line-height: 1.75;
+  font-style: italic;
+}
+
+.closing-phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.closing-phase {
+  background: rgba(0,0,0,0.2);
+  border-radius: 6px;
+  padding: 1rem;
+  border-top: 2px solid transparent;
+}
+
+.closing-phase.mise-border { border-top-color: var(--mise); }
+.closing-phase.cook-border { border-top-color: var(--cook); }
+.closing-phase.pass-border { border-top-color: var(--pass); }
+
+.closing-phase.cook-border .closing-phase-name { color: #cb5840; }
+.closing-phase.pass-border .closing-phase-name { color: #568860; }
+
+.closing-phase-name {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.closing-phase-desc {
+  font-size: 0.78rem;
+  color: #867b6c;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .closing-phases { grid-template-columns: 1fr; }
+  .closing-body { padding: 1.25rem 1.25rem 1.5rem; }
+  .closing-header { padding: 1.5rem 1.25rem 1.25rem; }
+}
+
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1217,7 +1377,8 @@ a:focus-visible,
       <img src="https://raw.githubusercontent.com/fresnostate-ideas/assignment-kitchen/main/assignmentkitchen.jpeg"
            alt="Four people in a cooking class, each peeling fruit with a different implement while an instructor guides them">
       <div class="intro-photo-caption">
-               <div class="intro-photo-caption-text">Like cooking, teaching and learning is a process.</div>
+       
+        <div class="intro-photo-caption-text">Like cooking, teaching and learning is a process.</div>
       </div>
     </div>
 
@@ -1271,20 +1432,18 @@ a:focus-visible,
       <span class="logo-text">The Assignment <em>Kitchen</em></span>
     </div>
     <div class="header-sep"></div>
-    <div class="header-step" id="header-step" aria-live="polite">Step 1 of 3</div>
+    <div class="header-step" id="header-step" aria-live="polite">Step 1 of 2</div>
   </header>
 
   <div class="main-content">
 
     <div class="progress-steps" role="list" aria-label="Progress">
-      <div class="progress-dot active" id="pdot-1" role="listitem" aria-label="Step 1: Select assignment, current"></div>
+      <div class="progress-dot active" id="pdot-1" role="listitem" aria-label="Step 1: Select and preview assignment, current"></div>
       <div class="progress-line" aria-hidden="true"></div>
-      <div class="progress-dot" id="pdot-2" role="listitem" aria-label="Step 2: Surface view"></div>
-      <div class="progress-line" aria-hidden="true"></div>
-      <div class="progress-dot" id="pdot-3" role="listitem" aria-label="Step 3: Phase view"></div>
+      <div class="progress-dot" id="pdot-2" role="listitem" aria-label="Step 2: Phase view"></div>
     </div>
 
-    <!-- ── STEP 1: Select ── -->
+    <!-- ── STEP 1: Select + inline surface reveal ── -->
     <div id="step-select">
       <div class="step-heading">
         <span class="step-label" aria-hidden="true">Step 1</span>
@@ -1330,82 +1489,133 @@ a:focus-visible,
         </button>
       </div>
 
-      <div class="step-nav">
+      <!-- Inline surface reveal — hidden until assignment selected -->
+      <div id="surface-reveal" style="display:none;" aria-live="polite">
+
+        <div class="surface-reveal-divider" aria-hidden="true"></div>
+
+        <div class="step-heading" style="margin-top:0;">
+          <span class="step-label" aria-hidden="true">Surface View</span>
+          <h2 class="surface-reveal-heading">What we usually see</h2>
+          <p>This is the assignment as it typically appears: what an instructor drafts, and what students receive.</p>
+        </div>
+
+        <div class="surface-panel">
+          <div class="surface-header">
+            <div class="surface-header-title" id="surface-title">Assignment Title</div>
+            <span class="surface-tag">Surface Level</span>
+          </div>
+          <div class="surface-body">
+            <div class="surface-field">
+              <div class="field-label">Assignment Prompt</div>
+              <div class="field-value prompt-text" id="surface-prompt"></div>
+            </div>
+            <div class="surface-field">
+              <div class="field-label">Learning Objectives</div>
+              <div class="field-value" id="surface-objectives"></div>
+            </div>
+            <div class="surface-field">
+              <div class="field-label">What Students Submit</div>
+              <div class="field-value" id="surface-deliverable"></div>
+            </div>
+          </div>
+          <div class="surface-meta">
+            <div class="meta-item">
+              <div class="field-label">Format</div>
+              <div class="field-value" id="surface-format" style="font-size:0.88rem;"></div>
+            </div>
+            <div class="meta-item">
+              <div class="field-label">Length / Scope</div>
+              <div class="field-value" id="surface-length" style="font-size:0.88rem;"></div>
+            </div>
+            <div class="meta-item">
+              <div class="field-label">Grading Basis</div>
+              <div class="field-value" id="surface-grading" style="font-size:0.88rem;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prereflect-block">
+          <div class="prereflect-eyebrow">Before You Look Deeper</div>
+          <p class="prereflect-intro">This assignment probably looks familiar. Before we open it up, take a moment to think about what is actually happening for students at each stage of the process.</p>
+          <ol class="prereflect-list" aria-label="Reflection prompts before viewing phases">
+            <li>
+              <div class="prereflect-phase-name mise-color">Preparation &mdash; <span>Mise en place</span></div>
+              <div class="prereflect-question">What do you think students are doing &mdash; and needing &mdash; before they begin work on this assignment?</div>
+            </li>
+            <li>
+              <div class="prereflect-phase-name cook-color">Production &mdash; <span>The cook</span></div>
+              <div class="prereflect-question">What is actually happening while students are working? What decisions are they making, and where might they need support?</div>
+            </li>
+            <li>
+              <div class="prereflect-phase-name pass-color">Processing &mdash; <span>The pass</span></div>
+              <div class="prereflect-question">What happens after students submit? What do they do with feedback, and what learning carries forward?</div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-secondary" onclick="showScreen('intro')">&larr; Back to Introduction</button>
+          <button class="btn-primary" onclick="triggerTransition()">
+            Enter the Kitchen &rarr;
+          </button>
+        </div>
+
+      </div><!-- /surface-reveal -->
+
+      <!-- Nav shown before any selection -->
+      <div class="step-nav" id="pre-select-nav">
         <button class="btn-secondary" onclick="showScreen('intro')">&larr; Back to Introduction</button>
-        <button class="btn-primary" onclick="goToSurface()" id="btn-to-surface" disabled aria-disabled="true">
-          View Surface Description &rarr;
-        </button>
       </div>
+
     </div>
 
-    <!-- ── STEP 2: Surface ── -->
-    <div id="step-surface" style="display:none;">
-      <div class="step-heading">
-        <span class="step-label" aria-hidden="true">Step 2 &mdash; Surface View</span>
-        <h1>What we usually see</h1>
-        <p>This is the assignment as it typically appears: what an instructor drafts, and what students receive.</p>
-      </div>
+<!-- ── STEP 4: Closing ── -->
+    <div id="step-closing" style="display:none;">
 
-      <div class="surface-panel">
-        <div class="surface-header">
-          <div class="surface-header-title" id="surface-title">Assignment Title</div>
-          <span class="surface-tag">Surface Level</span>
-        </div>
-        <div class="surface-body">
-          <div class="surface-field">
-            <div class="field-label">Assignment Prompt</div>
-            <div class="field-value prompt-text" id="surface-prompt"></div>
-          </div>
-          <div class="surface-field">
-            <div class="field-label">Learning Objectives</div>
-            <div class="field-value" id="surface-objectives"></div>
-          </div>
-          <div class="surface-field">
-            <div class="field-label">What Students Submit</div>
-            <div class="field-value" id="surface-deliverable"></div>
-          </div>
-        </div>
-        <div class="surface-meta">
-          <div class="meta-item">
-            <div class="field-label">Format</div>
-            <div class="field-value" id="surface-format" style="font-size:0.88rem;"></div>
-          </div>
-          <div class="meta-item">
-            <div class="field-label">Length / Scope</div>
-            <div class="field-value" id="surface-length" style="font-size:0.88rem;"></div>
-          </div>
-          <div class="meta-item">
-            <div class="field-label">Grading Basis</div>
-            <div class="field-value" id="surface-grading" style="font-size:0.88rem;"></div>
-          </div>
-        </div>
-      </div>
+      <div class="closing-panel">
 
-      <div class="prereflect-block">
-        <div class="prereflect-eyebrow">Before You Look Deeper</div>
-        <p class="prereflect-intro">This assignment probably looks familiar. Before we open it up, take a moment to think about what is actually happening for students at each stage of the process.</p>
-        <ol class="prereflect-list" aria-label="Reflection prompts before viewing phases">
-          <li>
-            <div class="prereflect-phase-name mise-color">Preparation &mdash; <span>Mise en place</span></div>
-            <div class="prereflect-question">What do you think students are doing &mdash; and needing &mdash; before they begin work on this assignment?</div>
-          </li>
-          <li>
-            <div class="prereflect-phase-name cook-color">Production &mdash; <span>The cook</span></div>
-            <div class="prereflect-question">What is actually happening while students are working? What decisions are they making, and where might they need support?</div>
-          </li>
-          <li>
-            <div class="prereflect-phase-name pass-color">Processing &mdash; <span>The pass</span></div>
-            <div class="prereflect-question">What happens after students submit? What do they do with feedback, and what learning carries forward?</div>
-          </li>
-        </ol>
+        <div class="closing-header">
+          <div class="closing-eyebrow">Back of House</div>
+          <h1 class="closing-title">Leaving the Kitchen</h1>
+        </div>
+
+        <div class="closing-body">
+          <p class="closing-lead">You have now seen one assignment opened up across all three phases. The framework works the same way for any assignment you design.</p>
+
+          <div class="closing-reflection">
+            <div class="closing-reflection-label">A question to carry with you</div>
+            <p class="closing-reflection-q">Thinking about your own practice &mdash; <em>where do you put the most design energy? Where the least?</em></p>
+          </div>
+
+          <div class="closing-metaphor">
+            <p>Every cook has a phase they are most comfortable in. The goal is not to spend equal time in each &mdash; but to make sure each phase is appropriately considered to ensure a high quality experience from start to finish.</p>
+          </div>
+
+          <div class="closing-phases" aria-label="The three phases summary">
+            <div class="closing-phase mise-border">
+              <div class="closing-phase-name mise-color">Preparation</div>
+              <div class="closing-phase-desc">What students need before they can begin well</div>
+            </div>
+            <div class="closing-phase cook-border">
+              <div class="closing-phase-name cook-color">Production</div>
+              <div class="closing-phase-desc">What happens while the work is being made</div>
+            </div>
+            <div class="closing-phase pass-border">
+              <div class="closing-phase-name pass-color">Processing</div>
+              <div class="closing-phase-desc">Where learning consolidates &mdash; if designed in</div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
       <div class="step-nav">
-        <button class="btn-secondary" onclick="goBack('select')">&larr; Change Assignment</button>
-        <button class="btn-primary" onclick="triggerTransition()">
-          Open the Kitchen &rarr;
-        </button>
+        <button class="btn-secondary" onclick="goToPhaseView()">&larr; Back to the Phases</button>
+        <button class="btn-secondary" onclick="restart()">Examine Another Assignment</button>
       </div>
+
     </div>
 
     <!-- ── STEP 3: Phase view ── -->
@@ -1456,8 +1666,9 @@ a:focus-visible,
       </div>
 
       <div class="step-nav">
-        <button class="btn-secondary" onclick="goBack('surface')">&larr; Return to Surface View</button>
+        <button class="btn-secondary" onclick="goBack('select')">&larr; Change Assignment</button>
         <button class="btn-secondary" onclick="restart()">Start Over</button>
+        <button class="btn-primary" onclick="showClosing()">Finish &rarr;</button>
       </div>
     </div>
 
@@ -1973,12 +2184,29 @@ function showScreen(id) {
 
 function goBack(step) {
   if (step === "select") {
+    document.getElementById("surface-reveal").style.display = "none";
+    var preNav = document.getElementById("pre-select-nav");
+    if (preNav) preNav.style.display = "";
+    document.querySelectorAll(".assignment-card").forEach(function(c) {
+      c.classList.remove("selected");
+      c.setAttribute("aria-pressed", "false");
+    });
+    state.selectedAssignment = null;
     showStep("step-select");
-    updateHeader("Step 1 of 3", 1);
-  } else if (step === "surface") {
-    showStep("step-surface");
-    updateHeader("Step 2 of 3", 2);
+    updateHeader("Step 1 of 2", 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
+}
+
+function goToPhaseView() {
+  showStep("step-xray");
+  updateHeader("Step 2 of 2", 2);
+}
+
+function showClosing() {
+  showStep("step-closing");
+  document.getElementById("header-step").textContent = "Complete";
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function restart() {
@@ -1987,12 +2215,14 @@ function restart() {
     c.classList.remove("selected");
     c.setAttribute("aria-pressed", "false");
   });
+  document.getElementById("surface-reveal").style.display = "none";
+  document.getElementById("pre-select-nav").style.display = "";
   showStep("step-select");
-  updateHeader("Step 1 of 3", 1);
+  updateHeader("Step 1 of 2", 1);
 }
 
 function showStep(stepId) {
-  ["step-select", "step-surface", "step-xray"].forEach(function(id) {
+  ["step-select", "step-xray", "step-closing"].forEach(function(id) {
     document.getElementById(id).style.display = (id === stepId) ? "" : "none";
   });
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2000,9 +2230,10 @@ function showStep(stepId) {
 
 function updateHeader(text, step) {
   document.getElementById("header-step").textContent = text;
-  var labels = ["Step 1: Select assignment", "Step 2: Surface view", "Step 3: X-Ray view"];
-  ["pdot-1", "pdot-2", "pdot-3"].forEach(function(id, i) {
+  var labels = ["Step 1: Select and preview", "Step 2: Inside the kitchen"];
+  ["pdot-1", "pdot-2"].forEach(function(id, i) {
     var dot = document.getElementById(id);
+    if (!dot) return;
     dot.classList.remove("active", "done");
     if (i + 1 < step) dot.classList.add("done");
     else if (i + 1 === step) dot.classList.add("active");
@@ -2021,17 +2252,10 @@ function selectAssignment(key) {
   var card = document.getElementById("card-" + key);
   card.classList.add("selected");
   card.setAttribute("aria-pressed", "true");
-  var btn = document.getElementById("btn-to-surface");
-  btn.disabled = false;
-  btn.removeAttribute("aria-disabled");
-}
 
-/* --- Surface View ------------------------------------------------------- */
-function goToSurface() {
-  if (!state.selectedAssignment) return;
-  var data = assignments[state.selectedAssignment];
+  // Populate surface fields inline
+  var data = assignments[key];
   var s = data.surface;
-
   document.getElementById("surface-title").textContent = s.title;
   document.getElementById("surface-prompt").textContent = s.prompt;
   document.getElementById("surface-objectives").textContent = s.objectives;
@@ -2040,10 +2264,20 @@ function goToSurface() {
   document.getElementById("surface-length").textContent = s.length;
   document.getElementById("surface-grading").textContent = s.grading;
 
-  state.selectedConcerns = [];
+  // Show the inline surface reveal
+  var reveal = document.getElementById("surface-reveal");
+  reveal.style.display = "";
 
-  showStep("step-surface");
-  updateHeader("Step 2 of 3", 2);
+  // Hide the pre-select nav (back button shown before selection)
+  var preNav = document.getElementById("pre-select-nav");
+  if (preNav) preNav.style.display = "none";
+
+  // Scroll smoothly to the surface reveal
+  setTimeout(function() {
+    reveal.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 50);
+
+  updateHeader("Step 1 of 2", 1);
 }
 
 /* --- X-Ray trigger ------------------------------------------------------ */
@@ -2055,7 +2289,7 @@ function triggerTransition() {
     overlay.classList.remove("active");
     buildXray();
     showStep("step-xray");
-    updateHeader("Step 3 of 3", 3);
+    updateHeader("Step 2 of 2", 2);
     showPhase("prep");
   }, 1800);
 }
