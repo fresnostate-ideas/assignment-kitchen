@@ -562,6 +562,18 @@ a:focus-visible,
   margin-top: 1.75rem;
 }
 
+@media (max-width: 780px) {
+  .assignment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 440px) {
+  .assignment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .assignment-card {
   background: #fff;
   border: 1.5px solid var(--parchment-mid);
@@ -1171,6 +1183,41 @@ a:focus-visible,
 }
 
 /* ─── Closing screen ─────────────────────────────────────────────────── */
+.closing-hero {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.closing-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  filter: brightness(0.75) saturate(0.88);
+}
+
+.closing-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28,23,16,0.15) 0%,
+    transparent 40%,
+    transparent 55%,
+    var(--ink) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .closing-hero { height: 200px; }
+}
 .closing-panel {
   background: var(--ink);
   border-radius: 8px;
@@ -1281,7 +1328,8 @@ a:focus-visible,
 .closing-phase.cook-border { border-top-color: var(--cook); }
 .closing-phase.pass-border { border-top-color: var(--pass); }
 
-.closing-phase.cook-border .closing-phase-name { color: #cb5840; }
+.closing-phase.mise-border .closing-phase-name { color: #b48509; }
+.closing-phase.cook-border .closing-phase-name { color: #cd5a42; }
 .closing-phase.pass-border .closing-phase-name { color: #568860; }
 
 .closing-phase-name {
@@ -1293,7 +1341,7 @@ a:focus-visible,
 
 .closing-phase-desc {
   font-size: 0.78rem;
-  color: #867b6c;
+  color: #a09588;
   line-height: 1.5;
 }
 
@@ -1303,6 +1351,7 @@ a:focus-visible,
   .closing-header { padding: 1.5rem 1.25rem 1.25rem; }
 }
 
+.reflection-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1377,7 +1426,6 @@ a:focus-visible,
       <img src="https://raw.githubusercontent.com/fresnostate-ideas/assignment-kitchen/main/assignmentkitchen.jpeg"
            alt="Four people in a cooking class, each peeling fruit with a different implement while an instructor guides them">
       <div class="intro-photo-caption">
-       
         <div class="intro-photo-caption-text">Like cooking, teaching and learning is a process.</div>
       </div>
     </div>
@@ -1575,35 +1623,39 @@ a:focus-visible,
 
       <div class="closing-panel">
 
+        <div class="closing-hero" aria-hidden="true">
+          <img src="https://raw.githubusercontent.com/fresnostate-ideas/assignment-kitchen/main/assignmentkitchen3.png" alt="">
+        </div>
+
         <div class="closing-header">
           <div class="closing-eyebrow">Back of House</div>
           <h1 class="closing-title">Leaving the Kitchen</h1>
         </div>
 
         <div class="closing-body">
-          <p class="closing-lead">You have now seen one assignment opened up across all three phases. The framework works the same way for any assignment you design.</p>
+          <p class="closing-lead">You have now seen assignments opened up across all three phases. The framework works the same way for any assignment you design.</p>
 
           <div class="closing-reflection">
             <div class="closing-reflection-label">A question to carry with you</div>
-            <p class="closing-reflection-q">Thinking about your own practice &mdash; <em>where do you put the most design energy? Where the least?</em></p>
+            <p class="closing-reflection-q">Thinking about your own practice: <em>where do you put the most design energy? Where the least?</em></p>
           </div>
 
           <div class="closing-metaphor">
-            <p>Every cook has a phase they are most comfortable in. The goal is not to spend equal time in each &mdash; but to make sure each phase is appropriately considered to ensure a high quality experience from start to finish.</p>
+            <p>Every cook has a phase they are most comfortable in. The goal is not to spend equal time in each, but to make sure each phase is appropriately considered to ensure a high quality experience from start to finish.</p>
           </div>
 
           <div class="closing-phases" aria-label="The three phases summary">
             <div class="closing-phase mise-border">
               <div class="closing-phase-name mise-color">Preparation</div>
-              <div class="closing-phase-desc">What students need before they can begin well</div>
+              <div class="closing-phase-desc">What students need before they can begin well?</div>
             </div>
             <div class="closing-phase cook-border">
               <div class="closing-phase-name cook-color">Production</div>
-              <div class="closing-phase-desc">What happens while the work is being made</div>
+              <div class="closing-phase-desc">What happens while the work is being made?</div>
             </div>
             <div class="closing-phase pass-border">
               <div class="closing-phase-name pass-color">Processing</div>
-              <div class="closing-phase-desc">Where learning consolidates &mdash; if designed in</div>
+              <div class="closing-phase-desc">How will students reflect on the process?</div>
             </div>
           </div>
 
@@ -2271,11 +2323,6 @@ function selectAssignment(key) {
   // Hide the pre-select nav (back button shown before selection)
   var preNav = document.getElementById("pre-select-nav");
   if (preNav) preNav.style.display = "none";
-
-  // Scroll smoothly to the surface reveal
-  setTimeout(function() {
-    reveal.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 50);
 
   updateHeader("Step 1 of 2", 1);
 }
